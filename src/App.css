@@ -1,0 +1,17 @@
+body {
+  background-color: rgb(114, 109, 108);
+}
+option {
+  width: 100px;
+}
+select {
+  width: 21%;
+  height: 25px;
+}
+button {
+  cursor: pointer;
+  padding: 5px 20px;
+}
+span {
+  font-size: 20px;
+}
