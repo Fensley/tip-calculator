@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [value, setValue] = useState("");
   function handleValue(e) {
+    e.preventDefault();
     setValue(+e.target.value);
   }
 
@@ -18,6 +19,12 @@ function App() {
   }
   const math2 = (value * last) / 100;
   let Final = math + math2;
+
+  function handlereset() {
+    setValue("");
+    setSecond(0);
+    setlast(0);
+  }
 
   return (
     <div>
@@ -37,16 +44,25 @@ function App() {
         math2={math2}
         Final={Final}
       />
-      <Five value={value} SecondHanle={SecondHanle} math={math} />
+      <Five
+        value={value}
+        SecondHanle={SecondHanle}
+        math={math}
+        reset={handlereset}
+      />
     </div>
   );
 }
 
-function First({ value, handleValue, SecondHanle, math }) {
+function First({ handleValue, value }) {
   return (
     <div>
       <span> How much was the Bill ?</span>
-      <input placeholder="cost of the food" onChange={handleValue} />
+      <input
+        placeholder="cost of the food"
+        onChange={handleValue}
+        value={value}
+      />
       <br />
     </div>
   );
@@ -64,7 +80,7 @@ function SecondF({ SecondHanle }) {
     </>
   );
 }
-function Third({ SecondHanle, thirdHanle }) {
+function Third({ thirdHanle }) {
   return (
     <>
       <br />
@@ -93,6 +109,6 @@ function Fouth({ value, Final }) {
   );
 }
 function Five({ reset }) {
-  return <button> Reset</button>;
+  return <button onClick={reset}> Reset</button>;
 }
 export default App;
